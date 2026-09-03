@@ -97,6 +97,17 @@ document.querySelectorAll(".filter-tab").forEach((tab) => {
   });
 });
 
+function renderEnv() {
+  const config = window.ENV_CONFIG || { APP_ENV: 'local-dev', ACTION_SECRET: 'not-set', BUILD_TIME: 'n/a' };
+  const appEnvEl = document.querySelector("#env-app-env");
+  const secretEl = document.querySelector("#env-secret-val");
+  const timeEl = document.querySelector("#env-build-time");
+
+  if (appEnvEl) appEnvEl.textContent = config.APP_ENV;
+  if (secretEl) secretEl.textContent = config.ACTION_SECRET;
+  if (timeEl) timeEl.textContent = `Build: ${config.BUILD_TIME}`;
+}
+
 clearCompletedButton.addEventListener("click", () => {
   tasks = tasks.filter((task) => !task.completed);
   saveTasks();
@@ -104,3 +115,5 @@ clearCompletedButton.addEventListener("click", () => {
 });
 
 render();
+renderEnv();
+

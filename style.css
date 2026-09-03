@@ -91,3 +91,13 @@ body::before {
   .add-button { min-height: 47px; }
   .footer-note { flex-wrap: wrap; }
 }
+
+.env-banner { margin-top: 30px; padding: 18px; background: rgba(255, 255, 255, 0.7); border: 1px solid rgba(0, 0, 0, 0.08); border-radius: 12px; font-size: 13px; }
+.env-banner-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.env-tag { font-weight: 600; color: #166534; background: #dcfce7; padding: 4px 8px; border-radius: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+.env-timestamp { font-size: 11px; color: #6b7280; }
+.env-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.env-item { display: flex; flex-direction: column; gap: 4px; }
+.env-label { font-size: 11px; color: #4b5563; font-weight: 500; }
+.env-item code { font-family: monospace; background: #f3f4f6; padding: 6px 10px; border-radius: 6px; border: 1px solid #e5e7eb; color: #1f2937; word-break: break-all; font-size: 12px; }
+

@@ -64,8 +64,26 @@
       </div>
     </section>
 
+    <section class="env-banner" aria-label="Environment & Secret configuration">
+      <div class="env-banner-header">
+        <span class="env-tag">⚡ GitHub Actions Env & Secret Test</span>
+        <span class="env-timestamp" id="env-build-time">Build: --</span>
+      </div>
+      <div class="env-grid">
+        <div class="env-item">
+          <span class="env-label">Environment (APP_ENV)</span>
+          <code id="env-app-env">--</code>
+        </div>
+        <div class="env-item">
+          <span class="env-label">Secret (ACTION_SECRET)</span>
+          <code id="env-secret-val">--</code>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer-note"><span>Built for practice</span><span class="footer-line"></span><span>HTML · CSS · JavaScript</span></footer>
   </main>
+  <script src="env-config.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
