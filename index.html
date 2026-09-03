@@ -44,6 +44,12 @@
       <form class="task-form" id="task-form">
         <label class="sr-only" for="task-input">New task</label>
         <input id="task-input" name="task" type="text" placeholder="Add a GitHub Actions experiment..." maxlength="100" autocomplete="off" required>
+        <label class="sr-only" for="priority-input">Priority</label>
+        <select id="priority-input" name="priority" aria-label="Task priority">
+          <option value="high">High priority</option>
+          <option value="medium" selected>Medium priority</option>
+          <option value="low">Low priority</option>
+        </select>
         <button class="add-button" type="submit"><span>+</span> Add task</button>
       </form>
 
@@ -53,7 +59,11 @@
           <button class="filter-tab" type="button" data-filter="open">Open</button>
           <button class="filter-tab" type="button" data-filter="done">Done</button>
         </div>
-        <span id="task-count" class="task-count">0 tasks</span>
+        <div class="toolbar-actions">
+          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search tasks" aria-label="Search tasks"></label>
+          <label class="sort-box"><span class="sr-only">Sort tasks</span><select id="sort-select"><option value="newest">Newest</option><option value="priority">Priority</option><option value="status">Status</option></select></label>
+          <span id="task-count" class="task-count">0 tasks</span>
+        </div>
       </div>
 
       <ul class="task-list" id="task-list" aria-live="polite"></ul>
@@ -61,6 +71,20 @@
         <span class="empty-icon">✦</span>
         <h3>No tasks here yet</h3>
         <p>Add your first experiment above and make it real with a commit.</p>
+      </div>
+    </section>
+
+    <section class="power-panel" aria-label="Workflow command center">
+      <div class="power-copy">
+        <p class="section-kicker">02 / workflow command center</p>
+        <h2>Make the next run count.</h2>
+        <p>Turn your queue into a repeatable GitHub habit. Export your board before a branch change, then import it on another machine.</p>
+      </div>
+      <div class="command-grid">
+        <button class="command-button" id="export-tasks" type="button"><span class="command-icon">↓</span><span><strong>Export board</strong><small>Download a JSON backup</small></span></button>
+        <button class="command-button" id="import-tasks" type="button"><span class="command-icon">↑</span><span><strong>Import board</strong><small>Restore a JSON backup</small></span></button>
+        <button class="command-button" id="load-challenge" type="button"><span class="command-icon">✦</span><span><strong>Load challenge</strong><small>Seed a fresh workflow</small></span></button>
+        <input id="import-input" type="file" accept="application/json" hidden>
       </div>
     </section>
 
