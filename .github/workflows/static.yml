@@ -38,7 +38,7 @@ jobs:
           APP_ENV: ${{ vars.APP_ENV || 'production-github-actions' }}
           ACTION_SECRET: ${{ secrets.ACTION_SECRET || 'demo-secret-from-github-actions' }}
         run: |
-          cat << 'EOF' > env-config.js
+          cat << EOF > env-config.js
           window.ENV_CONFIG = {
             APP_ENV: "$APP_ENV",
             ACTION_SECRET: "$ACTION_SECRET",
