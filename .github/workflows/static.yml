@@ -35,8 +35,8 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Generate env-config.js from Secrets and Vars
         env:
-          APP_ENV: ${{ vars.APP_ENV || 'production-github-actions' }}
-          ACTION_SECRET: ${{ secrets.ACTION_SECRET || 'demo-secret-from-github-actions' }}
+          APP_ENV: ${{ secrets.APP_ENV }}
+          ACTION_SECRET: ${{ secrets.ACTION_SECRET }}
         run: |
           cat << EOF > env-config.js
           window.ENV_CONFIG = {
