@@ -34,18 +34,6 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Generate env-config.js from Secrets and Vars
-        env:
-          APP_ENV: ${{ secrets.APP_ENV }}
-          ACTION_SECRET: ${{ secrets.ACTION_SECRET }}
-        run: |
-          cat << EOF > env-config.js
-          window.ENV_CONFIG = {
-            APP_ENV: "$APP_ENV",
-            ACTION_SECRET: "$ACTION_SECRET",
-            BUILD_TIME: "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          };
-          EOF
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

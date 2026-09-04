@@ -1,113 +1,358 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A small task board for learning GitHub Actions.">
-  <title>Action Lab | Task Board</title>
+  <meta name="description" content="Interactive GitHub Actions Learning Laboratory and Comprehensive Masterclass">
+  <meta name="keywords" content="GitHub Actions, CI/CD, DevOps, Workflow Simulator, YAML Editor, Runner, Actions Lab">
+  <title>⚡ GitHub Actions Lab — Interactive Workflow Simulator & Learning Platform</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app-shell">
-    <header class="topbar">
-      <a class="brand" href="index.html" aria-label="Action Lab home">
-        <span class="brand-mark">></span>
-        <span>action lab</span>
+
+  <!-- APP HEADER / STICKY TOPBAR -->
+  <header class="app-header">
+    <div class="header-left">
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Navigation Menu">☰ Menu</button>
+      <a href="#01-what-is-github-actions" class="brand-logo" id="brand-logo-btn">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">GitHub Actions</span>
+        <span class="brand-badge">Lab</span>
       </a>
-      <span class="status-pill"><span class="status-dot"></span>local workspace</span>
-    </header>
+    </div>
 
-    <section class="intro" aria-labelledby="page-title">
-      <p class="eyebrow">A tiny project with a real workflow</p>
-      <h1 id="page-title">Ship small.<br><em>Learn loudly.</em></h1>
-      <p class="intro-copy">Use this task board to practice commits, branches, pull requests, and GitHub Actions. Your tasks stay in this browser.</p>
+    <div class="header-right">
+      <div class="mode-tabs-row">
+        <button class="mode-tab-btn active" data-viewport="view-docs">📚 Learn</button>
+        <button class="mode-tab-btn" data-viewport="view-lab">🧪 Actions Lab</button>
+        <button class="mode-tab-btn" data-viewport="view-challenges">🎯 Challenges</button>
+        <button class="mode-tab-btn" data-viewport="view-builder">🛠️ Pipeline Builder</button>
+      </div>
+      
+      <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme">☀️ Light</button>
+    </div>
+  </header>
+
+  <!-- APPLICATION VIEWPORTS CONTAINER -->
+  <div class="app-viewport-container">
+
+    <!-- VIEWPORT 1: 📚 LEARN (DOCUMENTATION) -->
+    <section class="app-viewport active" id="view-docs">
+      <div class="app-layout">
+
+        <!-- MOBILE SIDEBAR BACKDROP OVERLAY -->
+        <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+
+        <!-- SIDEBAR NAVIGATION DRAWER -->
+        <aside class="sidebar" id="sidebar">
+          <!-- Mobile Mode Tabs inside drawer -->
+          <div class="mobile-drawer-modes">
+            <button class="mode-tab-btn active" data-viewport="view-docs">📚 Learn</button>
+            <button class="mode-tab-btn" data-viewport="view-lab">🧪 Actions Lab</button>
+            <button class="mode-tab-btn" data-viewport="view-challenges">🎯 Challenges</button>
+            <button class="mode-tab-btn" data-viewport="view-builder">🛠️ Builder</button>
+          </div>
+
+          <div class="sidebar-header">
+            <div class="sidebar-progress">
+              <div class="progress-info">
+                <span>Learning Progress</span>
+                <span id="progress-text">0% (0/100)</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-bar-fill"></div>
+              </div>
+            </div>
+          </div>
+
+          <nav class="sidebar-nav" id="sidebar-nav">
+            <!-- Dynamically rendered by app.js -->
+          </nav>
+        </aside>
+
+        <!-- CONTENT AREA -->
+        <div class="content-area">
+          <div class="content-wrapper">
+
+            <!-- MAIN ARTICLE -->
+            <main class="main-article" id="main-article">
+
+              <!-- HERO BANNER (Shown ONLY on Topic 01 / Homepage) -->
+              <div id="hero-banner-wrapper">
+                <section class="hero-banner">
+                  <h1 class="hero-title">GitHub Actions<br>From Git Push to Production</h1>
+                  <p class="hero-subtitle">A complete interactive guide to understanding, building, debugging, securing, and deploying production-grade GitHub Actions workflows.</p>
+                  <div class="hero-actions">
+                    <a href="#01-what-is-github-actions" class="btn-primary">Start Learning</a>
+                    <button class="btn-secondary" id="open-lab-hero-btn">Launch Actions Lab 🧪</button>
+                  </div>
+                </section>
+              </div>
+
+              <!-- BREADCRUMBS & TOP BAR -->
+              <div class="article-breadcrumbs">
+                <span>GitHub Actions</span>
+                <span>→</span>
+                <span id="breadcrumb-cat">GETTING STARTED</span>
+                <span>→</span>
+                <strong id="breadcrumb-title" style="color:var(--text-primary);">What is GitHub Actions?</strong>
+              </div>
+
+              <!-- ARTICLE HEADER -->
+              <header class="article-header">
+                <div class="article-title-row">
+                  <h1 class="article-title" id="article-title">01. What is GitHub Actions?</h1>
+                  <button class="mark-complete-btn" id="mark-complete-btn">◯ Mark as Complete</button>
+                </div>
+                <p class="article-subtitle" id="article-subtitle">Automate, customize, and execute software development workflows right in your repository.</p>
+              </header>
+
+              <!-- INTERACTIVE WIDGET CONTAINER -->
+              <div id="interactive-widget-container"></div>
+
+              <!-- ARTICLE BODY CONTENT -->
+              <article class="article-body" id="article-body">
+                <!-- Dynamically populated by app.js -->
+              </article>
+
+              <!-- ARTICLE FOOTER NAVIGATION -->
+              <nav class="article-footer-nav" aria-label="Topic Navigation">
+                <a href="#" class="footer-nav-card prev" id="footer-prev-card" style="display:none;">
+                  <span class="footer-nav-dir">← Previous Topic</span>
+                  <span class="footer-nav-title">--</span>
+                </a>
+                <a href="#" class="footer-nav-card next" id="footer-next-card">
+                  <span class="footer-nav-dir">Next Topic →</span>
+                  <span class="footer-nav-title">02. Why GitHub Actions?</span>
+                </a>
+              </nav>
+
+            </main>
+
+          </div>
+        </div>
+
+      </div>
     </section>
 
-    <section class="stats-grid" aria-label="Task summary">
-      <div class="stat-card accent-card"><span class="stat-label">Progress</span><strong id="progress-value">0%</strong><span id="progress-caption">Ready when you are</span></div>
-      <div class="stat-card"><span class="stat-label">Open tasks</span><strong id="open-value">0</strong><span>Keep the queue moving</span></div>
-      <div class="stat-card"><span class="stat-label">Completed</span><strong id="done-value">0</strong><span>Proof of momentum</span></div>
+    <!-- VIEWPORT 2: 🧪 ACTIONS LAB (SIMULATOR SUITE) -->
+    <section class="app-viewport" id="view-lab">
+      <div class="lab-container">
+
+        <!-- LAB TOOLBAR -->
+        <div class="lab-toolbar">
+          <div class="lab-title-group">
+            <span>⚡</span>
+            <h2>Interactive GitHub Actions Lab</h2>
+          </div>
+
+          <div class="preset-dropdown-group">
+            <label for="lab-preset-select" class="sr-only">Choose Preset Workflow</label>
+            <select class="lab-select" id="lab-preset-select">
+              <option value="node">Preset: Node.js CI Pipeline</option>
+              <option value="static">Preset: Static Website Deployment</option>
+              <option value="python">Preset: Python Pytest Suite</option>
+              <option value="matrix">Preset: Matrix Build Grid</option>
+              <option value="artifact">Preset: Build & Upload Artifact</option>
+              <option value="fail_missing_test">Preset: Fail Scenario - Missing test script</option>
+              <option value="fail_unmatched_branch">Preset: Trigger Mismatch - Wrong Branch</option>
+            </select>
+          </div>
+
+          <div class="trigger-form-group">
+            <select class="lab-select" id="trigger-event-select">
+              <option value="push">Event: push</option>
+              <option value="pull_request">Event: pull_request</option>
+              <option value="workflow_dispatch">Event: workflow_dispatch</option>
+              <option value="schedule">Event: schedule (cron)</option>
+            </select>
+
+            <select class="lab-select" id="trigger-branch-select">
+              <option value="main">Branch: main</option>
+              <option value="feature/login">Branch: feature/login</option>
+              <option value="dev">Branch: dev</option>
+            </select>
+
+            <button class="trigger-run-btn" id="trigger-run-btn">▶ Trigger Workflow</button>
+          </div>
+        </div>
+
+        <!-- TRIGGER MATCH VERIFICATION BANNER -->
+        <div class="trigger-match-banner" id="trigger-match-banner">
+          <span id="trigger-banner-icon">✓</span>
+          <div>
+            <strong id="trigger-banner-title">Workflow Triggered Successfully!</strong>
+            <p id="trigger-banner-desc" style="margin:0.2rem 0 0 0; font-size:0.85rem;">Event matched <code>on: push</code> trigger for branch <code>main</code>.</p>
+          </div>
+        </div>
+
+        <!-- MAIN 2-COLUMN LAB GRID -->
+        <div class="lab-main-grid">
+
+          <!-- COLUMN 1: YAML EDITOR -->
+          <div class="lab-editor-card">
+            <div class="editor-header">
+              <span>📄 .github/workflows/main.yml</span>
+              <div class="editor-actions">
+                <button class="editor-btn" id="editor-format-btn">Format</button>
+                <button class="editor-btn" id="editor-reset-btn">Reset</button>
+                <button class="editor-btn" id="editor-copy-btn">Copy</button>
+              </div>
+            </div>
+
+            <div class="editor-wrapper">
+              <div class="editor-line-numbers" id="editor-line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</div>
+              <textarea class="editor-textarea" id="editor-textarea" spellcheck="false"></textarea>
+            </div>
+
+            <div class="editor-validation-bar valid" id="editor-validation-bar">
+              <span>✓ Valid Workflow YAML Syntax</span>
+            </div>
+          </div>
+
+          <!-- COLUMN 2: VISUAL DAG GRAPH & TIMELINE -->
+          <div class="lab-visual-column">
+
+            <!-- DAG GRAPH CARD -->
+            <div class="dag-graph-card">
+              <div class="dag-graph-header">
+                <div style="font-weight:700; font-size:0.95rem;">Workflow Execution DAG Graph</div>
+                <label class="step-by-step-toggle">
+                  <input type="checkbox" id="step-by-step-chk">
+                  <span>Step-by-step mode</span>
+                </label>
+                <button class="btn-secondary" id="next-step-btn" style="display:none; padding:0.25rem 0.6rem; font-size:0.8rem;">Next Step →</button>
+              </div>
+
+              <div class="dag-nodes-container" id="dag-nodes-container">
+                <!-- Dynamically rendered DAG nodes -->
+              </div>
+            </div>
+
+            <!-- TERMINAL LOG VIEWER -->
+            <div class="terminal-card">
+              <div class="terminal-header">
+                <span style="font-family:var(--font-mono); font-size:0.8rem; color:#7ee787;">💻 Streaming Runner Console Logs</span>
+                <div class="terminal-controls">
+                  <button class="terminal-btn" id="term-pause-btn">Pause</button>
+                  <button class="terminal-btn" id="term-clear-btn">Clear</button>
+                </div>
+              </div>
+              <div class="terminal-body" id="terminal-body">
+                <div style="color:#8b949e;">[Simulator Idle] Click "▶ Trigger Workflow" to start execution logs...</div>
+              </div>
+            </div>
+
+            <!-- FAILURE DIAGNOSTIC PANEL ("WHY DID THIS FAIL?") -->
+            <div class="failure-diagnostic-card" id="failure-diagnostic-card">
+              <div class="diag-title">
+                <span>❌ Why did this fail?</span>
+              </div>
+              <div class="diag-section" id="diag-problem"><strong>Problem:</strong> Missing test script</div>
+              <div class="diag-section" id="diag-cause"><strong>Cause:</strong> package.json does not define a "test" script for <code>npm test</code>.</div>
+              <div class="diag-section" id="diag-fix"><strong>How to Fix:</strong> Add <code>"scripts": { "test": "echo 'tests passed'" }</code> into package.json scripts.</div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- INSPECTORS ROW -->
+        <div class="inspectors-grid">
+
+          <!-- STEP & ACTION INSPECTOR -->
+          <div class="inspector-card">
+            <div class="inspector-title">🐾 Step & Action Inspector</div>
+            <div id="inspector-step-body" style="font-size:0.85rem; color:var(--text-secondary);">
+              Click any step or action node above to inspect owner, repo, ref, and execution parameters.
+            </div>
+          </div>
+
+          <!-- RUNNER & FILESYSTEM INSPECTOR -->
+          <div class="inspector-card">
+            <div class="inspector-title">🖥️ Runner & Workspace (/home/runner/work)</div>
+            <div class="fs-tree" id="inspector-fs-body">
+              📁 workspace/<br>
+              └── 📁 repo/ (Unchecked out)
+            </div>
+          </div>
+
+          <!-- SECRETS & CONTEXT EVALUATOR -->
+          <div class="inspector-card">
+            <div class="inspector-title">🔐 Secrets & Expression Playground</div>
+            <div style="font-size:0.85rem; color:var(--text-secondary);">
+              Expression: <code>\${{ github.ref }}</code> ➔ <span style="color:var(--accent-blue);" id="expr-eval-out">refs/heads/main</span><br>
+              Secret: <code>\${{ secrets.API_KEY }}</code> ➔ <span style="color:var(--accent-green);">🔐 ******** (Masked)</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
     </section>
 
-    <section class="workspace" aria-label="Task workspace">
-      <div class="workspace-heading">
-        <div>
-          <p class="section-kicker">01 / your next moves</p>
-          <h2>Learning queue</h2>
-        </div>
-        <button class="ghost-button" id="clear-completed" type="button">Clear completed</button>
-      </div>
+    <!-- VIEWPORT 3: 🎯 CHALLENGES -->
+    <section class="app-viewport" id="view-challenges">
+      <div class="challenges-container">
+        <h2>🎯 Interactive GitHub Actions Challenges</h2>
+        <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Test your workflow engineering skills with hands-on exercises, bug fixes, and security audits.</p>
 
-      <form class="task-form" id="task-form">
-        <label class="sr-only" for="task-input">New task</label>
-        <input id="task-input" name="task" type="text" placeholder="Add a GitHub Actions experiment..." maxlength="100" autocomplete="off" required>
-        <label class="sr-only" for="priority-input">Priority</label>
-        <select id="priority-input" name="priority" aria-label="Task priority">
-          <option value="high">High priority</option>
-          <option value="medium" selected>Medium priority</option>
-          <option value="low">Low priority</option>
-        </select>
-        <button class="add-button" type="submit"><span>+</span> Add task</button>
-      </form>
-
-      <div class="toolbar">
-        <div class="filter-tabs" role="group" aria-label="Filter tasks">
-          <button class="filter-tab active" type="button" data-filter="all">All</button>
-          <button class="filter-tab" type="button" data-filter="open">Open</button>
-          <button class="filter-tab" type="button" data-filter="done">Done</button>
-        </div>
-        <div class="toolbar-actions">
-          <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search tasks" aria-label="Search tasks"></label>
-          <label class="sort-box"><span class="sr-only">Sort tasks</span><select id="sort-select"><option value="newest">Newest</option><option value="priority">Priority</option><option value="status">Status</option></select></label>
-          <span id="task-count" class="task-count">0 tasks</span>
-        </div>
-      </div>
-
-      <ul class="task-list" id="task-list" aria-live="polite"></ul>
-      <div class="empty-state" id="empty-state">
-        <span class="empty-icon">✦</span>
-        <h3>No tasks here yet</h3>
-        <p>Add your first experiment above and make it real with a commit.</p>
-      </div>
-    </section>
-
-    <section class="power-panel" aria-label="Workflow command center">
-      <div class="power-copy">
-        <p class="section-kicker">02 / workflow command center</p>
-        <h2>Make the next run count.</h2>
-        <p>Turn your queue into a repeatable GitHub habit. Export your board before a branch change, then import it on another machine.</p>
-      </div>
-      <div class="command-grid">
-        <button class="command-button" id="export-tasks" type="button"><span class="command-icon">↓</span><span><strong>Export board</strong><small>Download a JSON backup</small></span></button>
-        <button class="command-button" id="import-tasks" type="button"><span class="command-icon">↑</span><span><strong>Import board</strong><small>Restore a JSON backup</small></span></button>
-        <button class="command-button" id="load-challenge" type="button"><span class="command-icon">✦</span><span><strong>Load challenge</strong><small>Seed a fresh workflow</small></span></button>
-        <input id="import-input" type="file" accept="application/json" hidden>
-      </div>
-    </section>
-
-    <section class="env-banner" aria-label="Environment & Secret configuration">
-      <div class="env-banner-header">
-        <span class="env-tag">⚡ GitHub Actions Env & Secret Test</span>
-        <span class="env-timestamp" id="env-build-time">Build: --</span>
-      </div>
-      <div class="env-grid">
-        <div class="env-item">
-          <span class="env-label">Environment (APP_ENV)</span>
-          <code id="env-app-env">--</code>
-        </div>
-        <div class="env-item">
-          <span class="env-label">Secret (ACTION_SECRET)</span>
-          <code id="env-secret-val">--</code>
+        <div class="challenges-grid" id="challenges-grid">
+          <!-- Dynamically populated by app.js -->
         </div>
       </div>
     </section>
 
-    <footer class="footer-note"><span>Built for practice</span><span class="footer-line"></span><span>HTML · CSS · JavaScript</span></footer>
-  </main>
-  <script src="env-config.js"></script>
+    <!-- VIEWPORT 4: 🛠️ PIPELINE BUILDER -->
+    <section class="app-viewport" id="view-builder">
+      <div class="builder-container">
+        <h2>🛠️ Visual CI/CD Pipeline Builder</h2>
+        <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Click workflow building blocks below to construct a complete pipeline and generate clean GitHub Actions YAML.</p>
+
+        <div class="builder-grid">
+          <div class="block-palette" id="block-palette">
+            <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--text-muted);">Available Blocks</div>
+            <div class="palette-item" data-block="checkout"><span>➕ Checkout Repository</span></div>
+            <div class="palette-item" data-block="setup-node"><span>➕ Setup Node.js</span></div>
+            <div class="palette-item" data-block="setup-python"><span>➕ Setup Python</span></div>
+            <div class="palette-item" data-block="install"><span>➕ Install Dependencies</span></div>
+            <div class="palette-item" data-block="test"><span>➕ Run Test Suite</span></div>
+            <div class="palette-item" data-block="build"><span>➕ Build Bundle</span></div>
+            <div class="palette-item" data-block="upload-artifact"><span>➕ Upload Artifact</span></div>
+            <div class="palette-item" data-block="deploy"><span>➕ Deploy to GitHub Pages</span></div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:1rem;">
+            <div class="pipeline-stack" id="pipeline-stack">
+              <div style="font-size:0.8rem; font-weight:700; text-transform:uppercase; color:var(--text-muted);">Pipeline Stack</div>
+              <!-- Dynamically stacked blocks -->
+            </div>
+
+            <div class="code-block-wrapper">
+              <div class="code-block-header">
+                <span>Generated YAML Workflow</span>
+                <button class="code-copy-btn" id="builder-copy-yaml-btn">Copy YAML</button>
+              </div>
+              <pre><code id="generated-yaml-code"># Click blocks on the left to generate workflow YAML</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- TOAST NOTIFICATIONS CONTAINER -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Application Engine Script -->
   <script src="app.js"></script>
 </body>
 </html>

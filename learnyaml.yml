@@ -1,0 +1,68 @@
+version: 3.1
+name: yogesh saini
+number: 243 # in line comment
+
+list:
+  - 32
+  - cndsjk
+  - true
+
+list-2: [trenkj, fnrj, nkj]
+
+nested_list:
+  - name: fuckoff
+    varteis:
+      - sn
+      - ncjdsk
+      - cnjak
+
+  - name: moringn
+    varites:
+      - cnjsk
+      - iok
+
+instructinos: >
+  boil water
+  skjn
+
+instructinos-2: |
+  boil water
+  skjn
+
+is_hot: true
+add_suger: yes
+add_salt: no
+
+sweetner: null
+sweetner-2: ~
+
+local_time: 2026-09-04 09:32:33
+
+temo:
+  nsmc:
+    nskj: nsa
+    nsjkf: dnk
+    nksja: cjns
+  cnsdjn:
+    - nskj
+    - nskj
+    - nskj
+  csnk:
+    msdkjc: cnskd
+    mksjdn: nskvn
+
+default_params: &default_requirments
+  name: Yogesh Saini
+  DOB: 03/07/2005
+  gender: Male
+  address: "123, street, city, country"
+  phone_number: "123-456-7890"
+  email: yogesh.saini@example.com
+
+vip_user:
+  <<: *default_requirments
+  vip_code: VIP001
+  emergency_contact: "098-765-4321"
+
+zip_code: !!str 12345
+count: !!int 100
